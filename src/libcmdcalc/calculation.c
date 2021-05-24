@@ -62,7 +62,7 @@ float first_priority(char* expression, int* i)
             }
             if (divider == 0)
             {
-                printf("The expression contains a division by zero\n");
+                printf("The expression contains a division by zero\n\n");
                 exit(-1);
             }
             break;
@@ -77,7 +77,11 @@ float brackets_priority(char* expression, int* i)
     if (*(expression + *i) == '(')
     {
         *i += 1;
-        check_operations_sequence(expression, *i);
+        if ((*(expression + *i) == '*') || (*(expression + *i) == '/'))
+        {
+            printf("Operations placed incorrectly\n\n");
+            exit(-1);
+        }
         result = last_priority(expression, i); // recursion for expression in brackets
         *i += 1;
     }
@@ -90,7 +94,7 @@ float brackets_priority(char* expression, int* i)
 
 float take_number(char* expression, int* i)
 {
-    if ((*(expression + *i) < '0') || (*(expression + *i) > '9'))
+    if ((*(expression + *i) == '*') || (*(expression + *i) == '/'))
     {
         printf("Operations placed incorrectly\n\n");
         exit(-1);
@@ -104,6 +108,7 @@ float take_number(char* expression, int* i)
         sign *= -1;
         *i += 1;
     }
+    check_operations_sequence(expression, *i);
     while (*(expression + *i) >= '0' && *(expression + *i) <= '9')
     {
         iter++;
@@ -125,7 +130,7 @@ float take_number(char* expression, int* i)
             *i += 1;
         }
     }
-    if (*(expression + *i) == '(')
+    if ((*(expression + *i) == '(') || (*(expression + *i) == '\0'))
     {
         printf("Operations placed incorrectly\n\n");
         exit(-1);
