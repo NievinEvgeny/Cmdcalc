@@ -106,7 +106,7 @@ float take_number(char* expression, int* i)
     while (*(expression + *i) >= '0' && *(expression + *i) <= '9')
     {
         iter++;
-        if (iter > 9)
+        if (iter > 6)
         {
             printf("Number is too large\n\n");
             exit(-1);
