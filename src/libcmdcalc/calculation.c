@@ -49,7 +49,7 @@ float first_priority(char* expression, int* i)
             }
             if (divider == 0)
             {
-                printf("The expression contains a division by zero");
+                printf("The expression contains a division by zero\n");
                 exit(-1);
             }
             break;
