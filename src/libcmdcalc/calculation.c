@@ -89,6 +89,11 @@ float brackets_priority(char* expression, int* i)
 
 float take_number(char* expression, int* i)
 {
+    if ((*(expression + *i) < '0') || (*(expression + *i) > '9'))
+    {
+        printf("Operations placed incorrectly\n\n");
+        exit(-1);
+    }
     float result = 0;
     float factor = 1;
     short sign = 1;
