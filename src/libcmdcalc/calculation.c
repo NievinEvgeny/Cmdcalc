@@ -94,6 +94,7 @@ float take_number(char* expression, int* i)
         printf("Operations placed incorrectly\n\n");
         exit(-1);
     }
+    int iter = 0;
     float result = 0;
     float factor = 1;
     short sign = 1;
@@ -104,6 +105,12 @@ float take_number(char* expression, int* i)
     }
     while (*(expression + *i) >= '0' && *(expression + *i) <= '9')
     {
+        iter++;
+        if (iter > 9)
+        {
+            printf("Number is too large\n\n");
+            exit(-1);
+        }
         result = 10 * result + (*(expression + *i) - '0');
         *i += 1;
     }
