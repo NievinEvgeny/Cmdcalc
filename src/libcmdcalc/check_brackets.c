@@ -11,6 +11,10 @@ int check_brackets(char* expression)
         {
             close++;
         }
+        if (close > open)
+        {
+            return -1;
+        }
         expression++;
     }
     if (open == close)
