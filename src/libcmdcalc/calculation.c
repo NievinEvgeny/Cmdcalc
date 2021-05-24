@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void check_operations_sequence(char* expression, int i)
+{
+    if ((*(expression + i) == '+') || (*(expression + i) == '-') || (*(expression + i) == '*') || (*(expression + i) == '/'))
+    {
+        printf("Operations placed incorrectly\n\n");
+        exit(-1);
+    }
+}
+
 float calculation(char* expression)
 {
     int i = 0;
@@ -17,10 +26,12 @@ float last_priority(char* expression, int* i)
         {
         case '+':
             *i += 1;
+            check_operations_sequence(expression, *i);
             result += first_priority(expression, i);
             break;
         case '-':
             *i += 1;
+            check_operations_sequence(expression, *i);
             result -= first_priority(expression, i);
             break;
         }
@@ -38,10 +49,12 @@ float first_priority(char* expression, int* i)
         {
         case '*':
             *i += 1;
+            check_operations_sequence(expression, *i);
             result *= brackets_priority(expression, i);
             break;
         case '/':
             *i += 1;
+            check_operations_sequence(expression, *i);
             divider = brackets_priority(expression, i);
             if (divider != 0)
             {

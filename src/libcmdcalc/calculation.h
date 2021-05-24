@@ -1,3 +1,5 @@
+void check_operations_sequence(char* expression, int i);
+
 float calculation(char* array);
 
 float last_priority(char* array, int* i);
