@@ -77,6 +77,7 @@ float brackets_priority(char* expression, int* i)
     if (*(expression + *i) == '(')
     {
         *i += 1;
+        check_operations_sequence(expression, *i);
         result = last_priority(expression, i); // recursion for expression in brackets
         *i += 1;
     }
@@ -123,6 +124,11 @@ float take_number(char* expression, int* i)
             result = result + (*(expression + *i) - '0') * factor;
             *i += 1;
         }
+    }
+    if (*(expression + *i) == '(')
+    {
+        printf("Operations placed incorrectly\n\n");
+        exit(-1);
     }
     return result * sign;
 }
