@@ -17,5 +17,5 @@ int check_brackets(char* expression)
     {
         return 0;
     }
-    return 1;
+    return -1;
 }
