@@ -130,7 +130,7 @@ float take_number(char* expression, int* i)
             *i += 1;
         }
     }
-    if ((*(expression + *i) == '(') || (*(expression + *i) == '\0'))
+    if (*(expression + *i) == '(')
     {
         printf("Operations placed incorrectly\n\n");
         exit(-1);
