@@ -4,7 +4,8 @@
 
 void check_operations_sequence(char* expression, int i)
 {
-    if ((*(expression + i) == '+') || (*(expression + i) == '-') || (*(expression + i) == '*') || (*(expression + i) == '/'))
+    if ((*(expression + i) == '+') || (*(expression + i) == '-') || (*(expression + i) == '*') || (*(expression + i) == '/')
+        || (*(expression + i) == ')') || (*(expression + i) == '\0'))
     {
         printf("Operations placed incorrectly\n\n");
         exit(-1);
