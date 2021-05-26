@@ -78,11 +78,6 @@ float brackets_priority(char* expression, int* i)
     if (*(expression + *i) == '(')
     {
         *i += 1;
-        if ((*(expression + *i) == '*') || (*(expression + *i) == '/'))
-        {
-            printf("Operations placed incorrectly\n\n");
-            exit(-1);
-        }
         result = last_priority(expression, i); // recursion for expression in brackets
         *i += 1;
     }
